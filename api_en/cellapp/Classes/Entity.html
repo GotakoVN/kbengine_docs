@@ -84,7 +84,7 @@
 </td></tr>
 
 <tr><td>
-<span class="function_list">def <a href="#getViewHystArea" class="function_list" >getViewHystArea</a>( self ):</span>
+<span class="function_list">def <a href="#getViewLagArea" class="function_list" >getViewLagArea</a>( self ):</span>
 </td></tr>
 
 <tr><td>
@@ -100,7 +100,7 @@
 </td></tr>
 
 <tr><td>
-<span class="function_list">def <a href="#setViewRadius" class="function_list" >setViewRadius</a>( self, radius, hyst=5 ):</span>
+<span class="function_list">def <a href="#setViewRadius" class="function_list" >setViewRadius</a>( self, radius, lagSize=5.0 ):</span>
 </td></tr>
 
 <tr><td>
@@ -231,6 +231,9 @@
 </td></tr>
 
 <tr valign=top><td><a href="#isDestroyed" class="attribute_list" >isDestroyed</a></td><td>&nbsp; Read-only bool
+</td></tr>
+
+<tr valign=top><td><a href="#isOnGround" class="attribute_list" >isOnGround</a></td><td>&nbsp; Read-only bool
 </td></tr>
 
 <tr valign=top><td><a href="#isWitnessed" class="attribute_list" >isWitnessed</a></td><td>&nbsp; Read-only bool</td></tr>
@@ -626,7 +629,7 @@ class documentation.
 <br><br>
 A sample of information is as follows:
 
-<pre>  INFO cellapp [0x00001a1c] [2014-11-04 00:28:41,409] - Avatar::debugView: 100 size=4, Seen=4, Pending=0, ViewRadius=50.000, ViewHyst=5.000
+<pre>  INFO cellapp [0x00001a1c] [2014-11-04 00:28:41,409] - Avatar::debugView: 100 size=4, Seen=4, Pending=0, ViewRadius=50.000, ViewLagSize=5.000
   INFO cellapp [0x00001a1c] [2014-11-04 00:28:41,409] - Avatar::debugView: 100 Avatar(102), position(771.586.211.002.776.55), dist=0
   INFO cellapp [0x00001a1c] [2014-11-04 00:28:41,409] - Avatar::debugView: 100 Monster(1028), position(820.834.211.635.768.749), dist=49.8659
   INFO cellapp [0x00001a1c] [2014-11-04 00:28:41,409] - Avatar::debugView: 100 NPC(1025), position(784.024.210.95.782.273), dist=13.6915
@@ -939,7 +942,7 @@ int, newly created controller ID.
 This function returns the current View radius value of this <a href=../../keywords.html#entity>Entity</a>.
 <br><br>
 Data can be set via 
-<a href=../../keywords.html#entity>Entity</a>.<a href=Entity.html#setViewRadius>setViewRadius</a>( radius, hyst ).
+<a href=../../keywords.html#entity>Entity</a>.<a href=Entity.html#setViewRadius>setViewRadius</a>( radius, lagSize ).
 </div>
 
 <p>
@@ -952,8 +955,8 @@ Data can be set via
 
 
 
-<a name="getViewHystArea"></a><p class="function_definition">
-<span class="function_definition">def getViewHystArea( <i>self</i> ):</span>
+<a name="getViewLagArea"></a><p class="function_definition">
+<span class="function_definition">def getViewLagArea( <i>self</i> ):</span>
 </p>
 
 <div class="function_description">
@@ -961,7 +964,7 @@ Data can be set via
 This function returns the current lag area value of this <a href=../../keywords.html#entity>Entity</a> View.
 <br><br>
 Data can be set via 
-<a href=../../keywords.html#entity>Entity</a>.<a href=Entity.html#setViewRadius>setViewRadius</a>( radius, hyst ).
+<a href=../../keywords.html#entity>Entity</a>.<a href=Entity.html#setViewRadius>setViewRadius</a>( radius, lagSize ).
 </div>
 
 <p>
@@ -1139,7 +1142,7 @@ int8, navmesh layer to search for a path on.
 
 
 <a name="setViewRadius"></a><p class="function_definition">
-<span class="function_definition">def setViewRadius( <i>self, radius, hyst=5</i> ):</span>
+<span class="function_definition">def setViewRadius( <i>self, radius, lagSize=5.0</i> ):</span>
 </p>
 
 <div class="function_description">
@@ -1152,7 +1155,7 @@ This function can only be used by <a href=../../keywords.html#Witness>Witness</a
 Note: You can set the default View radius by setting the <a href=../../keywords.html#kbengine.xml>kbengine.xml</a> 
 configuration option 'cellapp/defaultViewRadius'.
 <br><br>
-Data can be obtained with <a href=../../keywords.html#entity>Entity</a>.<a href=Entity.html#getViewRadius>getViewRadius</a>( ) and <a href=../../keywords.html#entity>Entity</a>.<a href=Entity.html#getViewHystArea>getViewHystArea</a>( ).
+Data can be obtained with <a href=../../keywords.html#entity>Entity</a>.<a href=Entity.html#getViewRadius>getViewRadius</a>( ) and <a href=../../keywords.html#entity>Entity</a>.<a href=Entity.html#getViewLagArea>getViewLagArea</a>( ).
 </div>
 
 <p>
@@ -1163,7 +1166,7 @@ Data can be obtained with <a href=../../keywords.html#entity>Entity</a>.<a href=
 float, specifies the radius of the View area
 </span></td></tr>
 
-<tr valign=top><td><span class="function_parameter_name"><i>hyst</i></span></td><td><span class="function_parameter_description">
+<tr valign=top><td><span class="function_parameter_name"><i>lagSize</i></span></td><td><span class="function_parameter_description">
 float, specifies the size of the lag area of the View. A reasonable 
 setting of the lag area will reduce the sensitivity of View collisions 
 and reduce CPU consumption. Views where one entity 
